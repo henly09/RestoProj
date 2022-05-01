@@ -21,6 +21,70 @@
 </nav>
 </center>
 <body>
+<center>
+@if(!empty($activereservations) && $activereservations->count())
+<table class="table-sortable">
+<thead>
+  <tr>
+    <th> Res_id </th>
+    <th> Cust_id </th>
+    <th> Payment_no </th>
+    <th> C_id </th>
+    <th> status </th>
+    <th> Fullname </th>
+    <th> Address </th>
+    <th> Res_event </th>
+    <th> Contact_no </th>
+    <th> No_of_person </th>
+    <th> Res_date </th>
+    <th> Res_time </th>
+    <th> created_at </th>
+    <th> updated_at </th>
+    <th> Edit </th>
+    <th> Delete </th>
+  </tr>
+  </thead>
+  @foreach($activereservations as $key => $data)
+  <tbody>
+  <tr class="tablerow">
+    <td>{{ $data->Res_id }}</td>
+    <td>{{ $data->Cust_id }}</td>
+    <td>{{ $data->Payment_no }}</td>
+    <td>{{ $data->C_id }}</td>
+    <td>{{ $data->status }}</td>
+    <td>{{ $data->Fullname }}</td>
+    <td>{{ $data->Address }}</td>
+    <td>{{ $data->Res_event }}</td>
+    <td>{{ $data->Contact_no }}</td>
+    <td>{{ $data->No_of_person }}</td>
+    <td>{{ $data->Res_date }}</td>
+    <td>{{ $data->Res_time }}</td>
+    <td>{{ $data->created_at }}</td>
+    <td>{{ $data->updated_at }}</td>
+    <td class="editbutton">
+      <form action="" method="any" class="form-hidden">
+        <button>Edit</button>
+        @csrf
+      </form>
+    </td>
+    <td class="deletebutton">
+      <form action="" method="any" class="form-hidden">
+        <button >Delete</button>
+        @csrf
+      </form>
+    </td>
+  </tr>
+  </tbody>
+  @endforeach
+  @else
+  <div style="margin-top: 180px; font-family: Arial; font-weight: bold;">
+                <tr>
+                    <td classcolspan="10">There are no data.</td>
+                </tr>
+        </div>
+  @endif
+</table>
+</center>
 </body>
 </html>
 

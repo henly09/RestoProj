@@ -15,11 +15,54 @@ class IndexController extends Controller
     }
 
     public function dashboard(){
-        return view('dashboard',['message' => '']);
+
+        $tblreservationsactive = DB::table('tblreservations')->where('status', '=' , 'active')->get();
+        $reservationactivecount = $tblreservationsactive->count();
+
+        $tblreservationsnotactive = DB::table('tblreservations')->where('status', '=' , 'notactive')->get();
+        $reservationnotactivecount = $tblreservationsnotactive->count();
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        $tblcustomersactive = DB::table('tblcustomers')->where('status', '=' , 'active')->get();
+        $customeractivecount = $tblcustomersactive->count();
+
+        $tblcustomersnotactive = DB::table('tblcustomers')->where('status', '=' , 'notactive')->get();
+        $customernotactivecount = $tblcustomersnotactive->count();
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        $tblpaymentsactive = DB::table('tblpayments')->where('status', '=' , 'active')->get();
+        $paymentsactivecount = $tblpaymentsactive->count();
+
+        $tblpaymentsnotactive = DB::table('tblpayments')->where('status', '=' , 'notactive')->get();
+        $paymentsnotactivecount = $tblpaymentsnotactive->count();
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        $tblcashiersactive = DB::table('tblcashiers')->where('status', '=' , 'active')->get();
+        $cashiersactivecount = $tblcashiersactive->count();
+
+        $tblcashiersnotactive = DB::table('tblcashiers')->where('status', '=' , 'notactive')->get();
+        $cashiersnotactivecount = $tblcashiersnotactive->count();
+       
+        
+        return view('dashboard',['message' => '',
+            'reservationactivecount' => $reservationactivecount,
+            'reservationnotactivecount' => $reservationnotactivecount,
+            'customeractivecount' => $customeractivecount,
+            'customernotactivecount' => $customernotactivecount,
+            'paymentsactivecount' => $paymentsactivecount,
+            'paymentsnotactivecount' => $paymentsnotactivecount,
+            'cashiersactivecount' => $cashiersactivecount,
+            'cashiersnotactivecount' => $cashiersnotactivecount]);
     }
 
     public function reservations(){
-        return view('reservations',['message' => '']);
+
+        $activereservations = DB::table('tblreservations')->select('*')->where('status','=','active')->get();
+
+        return view('reservations',['message' => '','activereservations' => $activereservations]);
     }
     
     public function createreservations(){
@@ -31,11 +74,17 @@ class IndexController extends Controller
     }
 
     public function customerlist(){
-        return view('customerlist',['message' => '']);
+
+        $activecustomers = DB::table('tblcustomers')->select('*')->where('status','=','active')->get();
+
+        return view('customerlist',['message' => '','activecustomers' => $activecustomers]);
     }
 
     public function reservationhistory(){
-        return view('reservationhistory',['message' => '']);
+
+        $notactivereservations = DB::table('tblreservations')->select('*')->where('status','=','notactive')->get();
+
+        return view('reservationhistory',['message' => '', 'notactivereservations' => $notactivereservations]);
     }
 
     public function logout(Request $request){
@@ -97,7 +146,7 @@ class IndexController extends Controller
             "Last_Name"=>$lname,
             "username"=>$username,
             "password"=>$password,
-            "status"=>'active',
+            "status"=>'notactive',
             "Address"=>$address,
             "Phone_no"=>$phonenumber,
             "Email"=>$email,

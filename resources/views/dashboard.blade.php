@@ -21,9 +21,67 @@
 </nav>
 </center>
 <body>
+<center>
+<div class="flex-container">
+        <div class="card">
+        <h1> Active <br> Reservations </h1>
+        <h1> x{{ $reservationactivecount }} </h1>
+        </div>
+        <div class="card">
+        <h1> Not Active <br> Reservations </h1>
+        <h1> x{{ $reservationnotactivecount }} </h1>
+        </div>
+        <div class="card">
+        <h1> Active <br> Customers </h1>
+        <h1> x{{ $customeractivecount }} </h1>
+        </div>
+        <div class="card">
+        <h1> Not Active <br> Customers </h1>
+        <h1> x{{ $customernotactivecount }} </h1>
+        </div>
+      </div> 
+      
+      <div class="flex-container">
+        <div class="card">
+        <h1> Active <br> Payments </h1>
+        <h1> x{{ $paymentsactivecount }} </h1>
+        </div>
+        <div class="card">
+        <h1> Not Active <br> Payments </h1>
+        <h1> x{{ $paymentsnotactivecount }} </h1>
+        </div>
+        <div class="card">
+        <h1> Active <br> Cashiers </h1>
+        <h1> x{{ $cashiersactivecount }} </h1>
+        </div>
+        <div class="card">
+        <h1> Not Active <br> Cashiers </h1>
+        <h1> x{{ $cashiersnotactivecount }} </h1>
+        </div>
+      </div>
+</center>
 </body>
 </html>
 
 <style>
-
+.flex-container {
+  display: inline-flex;
+}
+.card > h1{
+  font-family: 'Arial';
+  font-weight: bold;
+  color: white;
+  text-shadow: 0.5px 0.5px rgba(0,0,0,0.5);
+}
+div.card {
+    flex-direction: column;
+}
+.flex-container > div {
+  background-color: #A73062;
+  margin: 10px;
+  padding: 20px;
+  font-size: 12px;
+  border-radius: 5px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+}
 </style>
