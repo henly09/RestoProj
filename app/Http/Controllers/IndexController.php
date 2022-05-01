@@ -27,27 +27,18 @@ class IndexController extends Controller
                 $tblreservationsnotactive = DB::table('tblreservations')->where('status', '=' , 'notactive')->get();
                 $reservationnotactivecount = $tblreservationsnotactive->count();
         
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
                 $tblcustomersactive = DB::table('tblcustomers')->where('status', '=' , 'active')->get();
                 $customeractivecount = $tblcustomersactive->count();
         
                 $tblcustomersnotactive = DB::table('tblcustomers')->where('status', '=' , 'notactive')->get();
                 $customernotactivecount = $tblcustomersnotactive->count();
         
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
                 $tblpaymentsactive = DB::table('tblpayments')->where('status', '=' , 'active')->get();
                 $paymentsactivecount = $tblpaymentsactive->count();
-        
                 $tblpaymentsnotactive = DB::table('tblpayments')->where('status', '=' , 'notactive')->get();
                 $paymentsnotactivecount = $tblpaymentsnotactive->count();
-        
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
                 $tblcashiersactive = DB::table('tblcashiers')->where('status', '=' , 'active')->get();
                 $cashiersactivecount = $tblcashiersactive->count();
-        
                 $tblcashiersnotactive = DB::table('tblcashiers')->where('status', '=' , 'notactive')->get();
                 $cashiersnotactivecount = $tblcashiersnotactive->count();
                

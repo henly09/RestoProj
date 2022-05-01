@@ -41,8 +41,8 @@ return new class extends Migration
 
         Schema::create('tblpayments', function (Blueprint $table) {
             $table->increments('Payment_no');
-            $table->unsignedInteger('Cust_id');
-            $table->foreign('Cust_id')->references('Cust_id')->on('tblcustomers')->onDelete('NO ACTION')->onUpdate('NO ACTION');
+            $table->unsignedInteger('Cust_id');  // foreign key assignation
+            $table->foreign('Cust_id')->references('Cust_id')->on('tblcustomers')->onDelete('NO ACTION')->onUpdate('NO ACTION'); // foreign key assignation
             $table->string('Name_of_customer');
             $table->unsignedInteger('C_id');
             $table->foreign('C_id')->references('C_id')->on('tblcashiers')->onDelete('NO ACTION')->onUpdate('NO ACTION');
