@@ -36,12 +36,9 @@
     <th> Res_event </th>
     <th> Contact_no </th>
     <th> No_of_person </th>
-    <th> Res_date </th>
-    <th> Res_time </th>
+    <th> Res_dateandtime </th>
     <th> created_at </th>
     <th> updated_at </th>
-    <th> Edit </th>
-    <th> Delete </th>
   </tr>
   </thead>
   @foreach($notactivereservations as $key => $data)
@@ -57,22 +54,9 @@
     <td>{{ $data->Res_event }}</td>
     <td>{{ $data->Contact_no }}</td>
     <td>{{ $data->No_of_person }}</td>
-    <td>{{ $data->Res_date }}</td>
-    <td>{{ $data->Res_time }}</td>
+    <td>{{ $data->Res_dateandtime }}</td>
     <td>{{ $data->created_at }}</td>
     <td>{{ $data->updated_at }}</td>
-    <td class="editbutton">
-      <form action="" method="any" class="form-hidden">
-        <button>Edit</button>
-        @csrf
-      </form>
-    </td>
-    <td class="deletebutton">
-      <form action="" method="any" class="form-hidden">
-        <button >Delete</button>
-        @csrf
-      </form>
-    </td>
   </tr>
   </tbody>
   @endforeach
@@ -89,5 +73,12 @@
 </html>
 
 <style>
-
+  table, th, td {
+  border: 1px solid black;
+  text-align:center;
+  padding:5px;
+  font-size:15px;
+  font-family: 'Arial';
+  font-weight: bold;
+}
 </style>
