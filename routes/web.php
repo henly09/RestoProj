@@ -33,6 +33,10 @@ Route::any('/signupchecker', [IndexController::class, 'signupchecker'])->name('s
 
 // Customer
 Route::any('/customerregister', [tblcustomerController::class, 'customerregister'])->name('customerregister'); // customerregister
+Route::any('/deletecustomerinfo/{Cust_id}', [tblcustomerController::class, 'deletecustomerinfo'])->name('deletecustomerinfo'); // deletecustomerinfo
+Route::any('/editcustomerinfo/{Cust_id}', [tblcustomerController::class, 'editcustomerinfo'])->name('editcustomerinfo'); // editcustomerinfo
+Route::any('/customeredited', [tblcustomerController::class, 'customeredited'])->name('customeredited'); // customeredited
 
 // Reservation
 Route::any('/issuereservation', [tblreservationsController::class, 'issuereservation'])->name('issuereservation'); // createreservation
+Route::any('/deletereservation/{Res_id}', [tblreservationsController::class, 'deletereservation'])->name('deletereservation'); // deletereservation

@@ -39,7 +39,6 @@
     <th> Res_dateandtime </th>
     <th> created_at </th>
     <th> updated_at </th>
-    <th> Edit </th>
     <th> Delete </th>
   </tr>
   </thead>
@@ -59,14 +58,8 @@
     <td>{{ $data->Res_dateandtime }}</td>
     <td>{{ $data->created_at }}</td>
     <td>{{ $data->updated_at }}</td>
-    <td class="editbutton">
-      <form action="" method="any" class="form-hidden">
-        <button>Edit</button>
-        @csrf
-      </form>
-    </td>
     <td class="deletebutton">
-      <form action="" method="any" class="form-hidden">
+      <form action="{{ route('deletereservation',$data->Res_id) }}" method="any" class="form-hidden">
         <button >Delete</button>
         @csrf
       </form>

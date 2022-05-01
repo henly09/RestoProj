@@ -52,13 +52,13 @@
     <td>{{ $data->created_at }}</td>
     <td>{{ $data->updated_at }}</td>
     <td class="editbutton">
-      <form action="" method="any" class="form-hidden">
+      <form action="{{ route('editcustomerinfo',$data->Cust_id) }}" method="any" class="form-hidden">
         <button>Edit</button>
         @csrf
       </form>
     </td>
     <td class="deletebutton">
-      <form action="" method="any" class="form-hidden">
+      <form action="{{ route('deletecustomerinfo',$data->Cust_id) }}" method="any" class="form-hidden">
         <button >Delete</button>
         @csrf
       </form>

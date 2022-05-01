@@ -78,4 +78,14 @@ class tblreservationsController extends Controller
         return redirect()->route('createreservations');
 
     }
+
+    public function deletereservation($Res_id){
+
+            $paymentid = DB::table('tblreservations')->select('Payment_no')->where('Res_id',$Res_id)->pluck('Payment_no')->first();
+            DB::table('tblpayments')->where('Payment_no', $paymentid)->update(['status' => 'notactive','updated_at' => \Carbon\Carbon::now()]);
+            DB::table('tblreservations')->where('Res_id', $Res_id)->update(['status' => 'notactive','updated_at' => \Carbon\Carbon::now()]);
+            return redirect()->route('reservations');
+
+    }
+    
 }
