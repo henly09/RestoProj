@@ -16,6 +16,7 @@
       <a href="{{ route('registercustomer')}}">REGISTER CUSTOMER ||</a>
       <a href="{{ route('customerlist')}}">CUSTOMER LIST ||</a>
       <a href="{{ route('reservationhistory')}}">RESERVATION HISTORY ||</a>
+      <a href="{{ route('menu')}}">MENU ||</a>
       <a href="{{ route('logout')}}">LOGOUT</a>
 </ul>
 </nav>

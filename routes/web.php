@@ -25,6 +25,7 @@ Route::any('/createreservations', [IndexController::class, 'createreservations']
 Route::any('/registercustomer', [IndexController::class, 'registercustomer'])->name('registercustomer'); // registercustomer
 Route::any('/customerlist', [IndexController::class, 'customerlist'])->name('customerlist'); // customerlist
 Route::any('/reservationhistory', [IndexController::class, 'reservationhistory'])->name('reservationhistory'); // reservationhistory
+Route::any('/menu', [IndexController::class, 'menu'])->name('menu'); // menu
 Route::any('/logout', [IndexController::class, 'logout'])->name('logout'); // logout
 
 // Index Functions

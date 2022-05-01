@@ -77,6 +77,18 @@ class IndexController extends Controller
         return redirect()->route('login');
         }
     }
+
+    public function menu(){
+
+        $name = session('globalFname');
+        if (!$name == null){
+        ///////////////////////////////////////////////////////////////////////////
+        return view('menu',['message' => '']);
+        } else {
+            return redirect()->route('login');
+        }
+
+    }
     
     public function createreservations(){
         try {
