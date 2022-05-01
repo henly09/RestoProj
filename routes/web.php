@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\tblcustomerController;
+use App\Http\Controllers\tblreservationsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,12 @@ Route::any('/customerlist', [IndexController::class, 'customerlist'])->name('cus
 Route::any('/reservationhistory', [IndexController::class, 'reservationhistory'])->name('reservationhistory'); // reservationhistory
 Route::any('/logout', [IndexController::class, 'logout'])->name('logout'); // logout
 
-// Functions
-Route::any('/loginchecker', [IndexController::class, 'loginchecker'])->name('loginchecker'); // login
-Route::any('/signupchecker', [IndexController::class, 'signupchecker'])->name('signupchecker'); // signup
+// Index Functions
+Route::any('/loginchecker', [IndexController::class, 'loginchecker'])->name('loginchecker'); // loginchecker
+Route::any('/signupchecker', [IndexController::class, 'signupchecker'])->name('signupchecker'); // signupchecker
+
+// Customer
+Route::any('/customerregister', [tblcustomerController::class, 'customerregister'])->name('customerregister'); // customerregister
+
+// Reservation
+Route::any('/issuereservation', [tblreservationsController::class, 'issuereservation'])->name('issuereservation'); // createreservation

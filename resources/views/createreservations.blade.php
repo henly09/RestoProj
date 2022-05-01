@@ -21,6 +21,43 @@
 </nav>
 </center>
 <body>
+<center>
+<h1> Resto Reservation Create Reservation</h1>
+<form action="{{ route('issuereservation') }}" method="any">
+        @csrf 
+            <div>
+                <label>Customer's Name: </label>
+                <select class="inputs" name="customerid" required>
+                    <option value="">Select Customer</option>
+                        @foreach ($tblcustomers as $tblcustomers)
+                    <option value='{{ $tblcustomers->Cust_id }}'>{{ $tblcustomers->cust_Fname }} {{ $tblcustomers->cust_Lname }}</option>
+                        @endforeach
+                </select>
+            </div>
+            <h1> </h1>
+            <div>
+                <label> Reservation Event: </label>
+                <input class="inputs" type="text" name="reservationevent" class="form-control" value="" placeholder="Reservation Event.." required>
+            </div>
+            <h1> </h1>
+            <div>
+                <label> No_of_Person: </label>
+                <input class="inputs" type="number" name="nopersons" class="form-control" value="" placeholder="Number of Attendees.." required>
+            </div>
+            <h1> </h1>
+            <div>
+                <label>Reservation Date and Time: </label>
+                <input type="datetime-local" class="inputs" name="datetime" min="<?php echo date("%Y-%m-%dT%H:%M:%S",strtotime("+0 day")); ?>" required>
+            </div>
+            <h1> </h1>
+            <div>
+                <label> Total Price of Orders: </label>
+                <input class="inputs" type="number" name="totalamount" class="form-control" value="" placeholder="Total Amount.." required>
+            </div>
+            <h1> </h1>
+            <input class="button" type="submit" name="submit" class="btn btn-danger" value="Create Reservation" required>
+            </form>
+</center>
 </body>
 </html>
 

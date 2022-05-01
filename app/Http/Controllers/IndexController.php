@@ -16,75 +16,131 @@ class IndexController extends Controller
 
     public function dashboard(){
 
-        $tblreservationsactive = DB::table('tblreservations')->where('status', '=' , 'active')->get();
-        $reservationactivecount = $tblreservationsactive->count();
+        try {
 
-        $tblreservationsnotactive = DB::table('tblreservations')->where('status', '=' , 'notactive')->get();
-        $reservationnotactivecount = $tblreservationsnotactive->count();
+            $name = session('globalFname');
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        $tblcustomersactive = DB::table('tblcustomers')->where('status', '=' , 'active')->get();
-        $customeractivecount = $tblcustomersactive->count();
-
-        $tblcustomersnotactive = DB::table('tblcustomers')->where('status', '=' , 'notactive')->get();
-        $customernotactivecount = $tblcustomersnotactive->count();
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        $tblpaymentsactive = DB::table('tblpayments')->where('status', '=' , 'active')->get();
-        $paymentsactivecount = $tblpaymentsactive->count();
-
-        $tblpaymentsnotactive = DB::table('tblpayments')->where('status', '=' , 'notactive')->get();
-        $paymentsnotactivecount = $tblpaymentsnotactive->count();
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        $tblcashiersactive = DB::table('tblcashiers')->where('status', '=' , 'active')->get();
-        $cashiersactivecount = $tblcashiersactive->count();
-
-        $tblcashiersnotactive = DB::table('tblcashiers')->where('status', '=' , 'notactive')->get();
-        $cashiersnotactivecount = $tblcashiersnotactive->count();
-       
+            if (!$name == null){
+                $tblreservationsactive = DB::table('tblreservations')->where('status', '=' , 'active')->get();
+                $reservationactivecount = $tblreservationsactive->count();
         
-        return view('dashboard',['message' => '',
-            'reservationactivecount' => $reservationactivecount,
-            'reservationnotactivecount' => $reservationnotactivecount,
-            'customeractivecount' => $customeractivecount,
-            'customernotactivecount' => $customernotactivecount,
-            'paymentsactivecount' => $paymentsactivecount,
-            'paymentsnotactivecount' => $paymentsnotactivecount,
-            'cashiersactivecount' => $cashiersactivecount,
-            'cashiersnotactivecount' => $cashiersnotactivecount]);
+                $tblreservationsnotactive = DB::table('tblreservations')->where('status', '=' , 'notactive')->get();
+                $reservationnotactivecount = $tblreservationsnotactive->count();
+        
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+                $tblcustomersactive = DB::table('tblcustomers')->where('status', '=' , 'active')->get();
+                $customeractivecount = $tblcustomersactive->count();
+        
+                $tblcustomersnotactive = DB::table('tblcustomers')->where('status', '=' , 'notactive')->get();
+                $customernotactivecount = $tblcustomersnotactive->count();
+        
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+                $tblpaymentsactive = DB::table('tblpayments')->where('status', '=' , 'active')->get();
+                $paymentsactivecount = $tblpaymentsactive->count();
+        
+                $tblpaymentsnotactive = DB::table('tblpayments')->where('status', '=' , 'notactive')->get();
+                $paymentsnotactivecount = $tblpaymentsnotactive->count();
+        
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+                $tblcashiersactive = DB::table('tblcashiers')->where('status', '=' , 'active')->get();
+                $cashiersactivecount = $tblcashiersactive->count();
+        
+                $tblcashiersnotactive = DB::table('tblcashiers')->where('status', '=' , 'notactive')->get();
+                $cashiersnotactivecount = $tblcashiersnotactive->count();
+               
+                
+                return view('dashboard',['message' => '',
+                    'reservationactivecount' => $reservationactivecount,
+                    'reservationnotactivecount' => $reservationnotactivecount,
+                    'customeractivecount' => $customeractivecount,
+                    'customernotactivecount' => $customernotactivecount,
+                    'paymentsactivecount' => $paymentsactivecount,
+                    'paymentsnotactivecount' => $paymentsnotactivecount,
+                    'cashiersactivecount' => $cashiersactivecount,
+                    'cashiersnotactivecount' => $cashiersnotactivecount]);
+            }
+            else{
+                return redirect()->route('login');
+            }
+
+        } catch (\Exception $e){
+            return redirect()->route('login');
+        }
+
+
     }
 
     public function reservations(){
-
+        try {
+        $name = session('globalFname');
+        if (!$name == null){
         $activereservations = DB::table('tblreservations')->select('*')->where('status','=','active')->get();
-
         return view('reservations',['message' => '','activereservations' => $activereservations]);
+        } else {
+            return redirect()->route('login');
+        }
+        } catch (\Exception $e){
+        return redirect()->route('login');
+        }
     }
     
     public function createreservations(){
-        return view('createreservations',['message' => '']);
+        try {
+            $name = session('globalFname');
+            if (!$name == null){
+            $tblcustomers = DB::table('tblcustomers')->select('*')->where('status', '=' , 'active')->get();
+            return view('createreservations',['message' => '','tblcustomers' => $tblcustomers]);
+
+        } else {
+            return redirect()->route('login');
+            }
+        } catch (\Exception $e){
+            return redirect()->route('login');
+        }   
     }
 
     public function registercustomer(){
+        try {
+            $name = session('globalFname');
+            if (!$name == null){
         return view('registercustomer',['message' => '']);
+    } else {
+        return redirect()->route('login');
+        }
+    } catch (\Exception $e){
+        return redirect()->route('login');
+    }   
     }
 
     public function customerlist(){
-
+        try {
+            $name = session('globalFname');
+            if (!$name == null){
         $activecustomers = DB::table('tblcustomers')->select('*')->where('status','=','active')->get();
-
         return view('customerlist',['message' => '','activecustomers' => $activecustomers]);
+    } else {
+        return redirect()->route('login');
+        }
+    } catch (\Exception $e){
+        return redirect()->route('login');
+    }   
     }
 
     public function reservationhistory(){
-
+        try {
+            $name = session('globalFname');
+            if (!$name == null){
         $notactivereservations = DB::table('tblreservations')->select('*')->where('status','=','notactive')->get();
-
         return view('reservationhistory',['message' => '', 'notactivereservations' => $notactivereservations]);
+    } else {
+        return redirect()->route('login');
+        }
+    } catch (\Exception $e){
+        return redirect()->route('login');
+    }  
     }
 
     public function logout(Request $request){
@@ -105,6 +161,10 @@ class IndexController extends Controller
         $password = $request->input('password');
         $user = DB::table('tblcashiers')->where('username', '=', $username)->where('password', '=', $password)->where('status', '=' , 'active')->get();
         $usercount = $user->count();
+        $Fname = DB::table('tblcashiers')->select('First_Name')->where('username', '=', $username)->where('password', '=', $password)->where('status', '=' , 'active')->pluck('First_Name')->first();
+        $Lname = DB::table('tblcashiers')->select('Last_Name')->where('username', '=', $username)->where('password', '=', $password)->where('status', '=' , 'active')->pluck('Last_Name')->first();
+        $request->session()->put('globalFname', $Fname);
+        $request->session()->put('globalLname', $Lname);
 
         if (!$usercount == 0) {
             return redirect()->route('dashboard');

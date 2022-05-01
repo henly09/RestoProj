@@ -66,8 +66,7 @@ return new class extends Migration
             $table->string('Res_event');
             $table->string('Contact_no');
             $table->string('No_of_person');
-            $table->timestamp('Res_date')->useCurrent();
-            $table->timestamp('Res_time')->useCurrent();
+            $table->timestamp('Res_dateandtime')->useCurrent();
             $table->timestamps();
         });
 
