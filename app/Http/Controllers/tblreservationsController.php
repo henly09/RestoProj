@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class tblreservationsController extends Controller
 {
-    public function issuereservation(Request $request){
+    public function issuereservation(Request $request){ // creating reservation function
 
         $Fname = session('globalFname');
         $Lname = session('globalLname');
@@ -79,7 +79,7 @@ class tblreservationsController extends Controller
 
     }
 
-    public function deletereservation($Res_id){
+    public function deletereservation($Res_id){ // delete reservation function
 
             $paymentid = DB::table('tblreservations')->select('Payment_no')->where('Res_id',$Res_id)->pluck('Payment_no')->first();
             DB::table('tblpayments')->where('Payment_no', $paymentid)->update(['status' => 'notactive','updated_at' => \Carbon\Carbon::now()]);

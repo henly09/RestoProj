@@ -7,42 +7,43 @@ use Illuminate\Http\Request;
 class IndexController extends Controller
 {
     public function login(){
-        return view('login',['message' => '']);
+        return view('login',['message' => '']); // login view
     }
 
     public function signup(){
-        return view('signup',['message' => '']);
+        return view('signup',['message' => '']); // signup view
     }
 
-    public function dashboard(){
+    public function dashboard(){  // dashboard view
 
         try {
-
-            $name = session('globalFname');
-
+            $name = session('globalFname'); // variable para sa checking if the user of system is logged in
             if (!$name == null){
-                $tblreservationsactive = DB::table('tblreservations')->where('status', '=' , 'active')->get();
-                $reservationactivecount = $tblreservationsactive->count();
+
+                $tblreservationsactive = DB::table('tblreservations')->where('status', '=' , 'active')->get(); // count active reservation
+                $reservationactivecount = $tblreservationsactive->count(); 
         
-                $tblreservationsnotactive = DB::table('tblreservations')->where('status', '=' , 'notactive')->get();
+                $tblreservationsnotactive = DB::table('tblreservations')->where('status', '=' , 'notactive')->get(); // count not active reservation
                 $reservationnotactivecount = $tblreservationsnotactive->count();
         
-                $tblcustomersactive = DB::table('tblcustomers')->where('status', '=' , 'active')->get();
+                $tblcustomersactive = DB::table('tblcustomers')->where('status', '=' , 'active')->get(); // count active customers
                 $customeractivecount = $tblcustomersactive->count();
         
-                $tblcustomersnotactive = DB::table('tblcustomers')->where('status', '=' , 'notactive')->get();
+                $tblcustomersnotactive = DB::table('tblcustomers')->where('status', '=' , 'notactive')->get(); // count not active customers
                 $customernotactivecount = $tblcustomersnotactive->count();
         
-                $tblpaymentsactive = DB::table('tblpayments')->where('status', '=' , 'active')->get();
+                $tblpaymentsactive = DB::table('tblpayments')->where('status', '=' , 'active')->get(); // count active payments 
                 $paymentsactivecount = $tblpaymentsactive->count();
-                $tblpaymentsnotactive = DB::table('tblpayments')->where('status', '=' , 'notactive')->get();
+
+                $tblpaymentsnotactive = DB::table('tblpayments')->where('status', '=' , 'notactive')->get(); // count not active payments
                 $paymentsnotactivecount = $tblpaymentsnotactive->count();
-                $tblcashiersactive = DB::table('tblcashiers')->where('status', '=' , 'active')->get();
+
+                $tblcashiersactive = DB::table('tblcashiers')->where('status', '=' , 'active')->get(); // count active cashier accounts
                 $cashiersactivecount = $tblcashiersactive->count();
-                $tblcashiersnotactive = DB::table('tblcashiers')->where('status', '=' , 'notactive')->get();
+
+                $tblcashiersnotactive = DB::table('tblcashiers')->where('status', '=' , 'notactive')->get();  // count not active cashiers
                 $cashiersnotactivecount = $tblcashiersnotactive->count();
                
-                
                 return view('dashboard',['message' => '',
                     'reservationactivecount' => $reservationactivecount,
                     'reservationnotactivecount' => $reservationnotactivecount,
@@ -54,21 +55,19 @@ class IndexController extends Controller
                     'cashiersnotactivecount' => $cashiersnotactivecount]);
             }
             else{
-                return redirect()->route('login');
+                return redirect()->route('login'); // return login page if not logged
             }
 
         } catch (\Exception $e){
-            return redirect()->route('login');
+            return redirect()->route('login'); // return login page if occured error
         }
-
-
     }
 
-    public function reservations(){
+    public function reservations(){ // reservation view page
         try {
         $name = session('globalFname');
         if (!$name == null){
-        $activereservations = DB::table('tblreservations')->select('*')->where('status','=','active')->get();
+        $activereservations = DB::table('tblreservations')->select('*')->where('status','=','active')->get(); // getting all data from table reservations in database
         return view('reservations',['message' => '','activereservations' => $activereservations]);
         } else {
             return redirect()->route('login');
@@ -78,7 +77,7 @@ class IndexController extends Controller
         }
     }
 
-    public function menu(){
+    public function menu(){ // menu view page
 
         $name = session('globalFname');
         if (!$name == null){
@@ -90,7 +89,7 @@ class IndexController extends Controller
 
     }
     
-    public function createreservations(){
+    public function createreservations(){ // create reservations view page
         try {
             $name = session('globalFname');
             if (!$name == null){
@@ -105,7 +104,7 @@ class IndexController extends Controller
         }   
     }
 
-    public function registercustomer(){
+    public function registercustomer(){// register cusomer view page
         try {
             $name = session('globalFname');
             if (!$name == null){
@@ -118,7 +117,7 @@ class IndexController extends Controller
     }   
     }
 
-    public function customerlist(){
+    public function customerlist(){ // customer list page
         try {
             $name = session('globalFname');
             if (!$name == null){
@@ -132,7 +131,7 @@ class IndexController extends Controller
     }   
     }
 
-    public function reservationhistory(){
+    public function reservationhistory(){ // reservation history page
         try {
             $name = session('globalFname');
             if (!$name == null){
@@ -146,12 +145,12 @@ class IndexController extends Controller
     }  
     }
 
-    public function logout(Request $request){
+    public function logout(Request $request){ // logout function
         $request->session()->flush();
         return view('login',['message' => '']);
     }
 
-    public function loginchecker(Request $request){
+    public function loginchecker(Request $request){ // login validation 
 
         $request->session()->flush();
     
@@ -178,7 +177,7 @@ class IndexController extends Controller
 
     }
 
-    public function signupchecker(Request $request){
+    public function signupchecker(Request $request){ // signup validation
 
         $this->validate($request, [
             'fname' => 'required',

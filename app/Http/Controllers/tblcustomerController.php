@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class tblcustomerController extends Controller
 {
-    public function customerregister(Request $request){
+    public function customerregister(Request $request){ // customer register function //
 
         $this->validate($request, [
             'fname' => 'required',
@@ -39,7 +39,7 @@ class tblcustomerController extends Controller
 
     }
 
-    public function customeredited(Request $request){
+    public function customeredited(Request $request){ // customer edit function
 
         $this->validate($request, [
             'customerid' => 'required',
@@ -64,7 +64,7 @@ class tblcustomerController extends Controller
     }
 
 
-    public function editcustomerinfo($Cust_id){
+    public function editcustomerinfo($Cust_id){ // edit customer data transfer to view
 
         $Cust_id = DB::table('tblcustomers')->select('Cust_id')->where('Cust_id', $Cust_id)->pluck('Cust_id')->first();
         $cust_Fname = DB::table('tblcustomers')->select('cust_Fname')->where('Cust_id', $Cust_id)->pluck('cust_Fname')->first();
@@ -76,7 +76,7 @@ class tblcustomerController extends Controller
         return view('customer.edit',['Cust_id' => $Cust_id,'cust_Fname' => $cust_Fname,'cust_Lname' => $cust_Lname,'cust_Address' => $cust_Address,'cust_Phone' => $cust_Phone,'gender' => $gender]);
     }
 
-    public function deletecustomerinfo($Cust_id){
+    public function deletecustomerinfo($Cust_id){ // delete custoemr function
 
         DB::table('tblcustomers')->where('Cust_id', $Cust_id)->update(['status' => 'notactive','updated_at' => \Carbon\Carbon::now()]);
         return redirect()->route('customerlist');
