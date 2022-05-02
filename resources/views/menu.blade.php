@@ -30,7 +30,7 @@
     <table>
     <tr>	
     <th colspan="1">	
-        <a href="https://en.wikipedia.org/wiki/Larrabee_(microarchitecture)"> <img src="{{ asset('Images/intro.png') }}"> </a>
+        <a href="https://en.wikipedia.org/wiki/Larrabee_(microarchitecture)"> <img src="{{ asset('Images/1.jpg') }}" width="500px"> </a>
     </th>
 
     <th>
@@ -66,7 +66,7 @@
     </th>
 
     <th>	
-        <a href="https://www.amd.com/en/chipsets/str40"> <img src="{{ asset('Images/AMD.png') }}" width="500px"> </a>
+        <a href="https://www.amd.com/en/chipsets/str40"> <img src="{{ asset('Images/2.jpg') }}" width="500px"> </a>
     </th>
 
     </tr>
@@ -84,7 +84,7 @@
     <table>
     <tr>	
     <th colspan="1">	
-        <a href="https://yourstory.com/mystory/how-virtual-reality-is-transforming-the-gaming-ind"> <img src="{{ asset('Images/VR.png') }}" width="500px" > </a>
+        <a href="https://yourstory.com/mystory/how-virtual-reality-is-transforming-the-gaming-ind"> <img src="{{ asset('Images/3.jpg') }}" width="500px" > </a>
     </th>
 
     <th>
@@ -121,7 +121,7 @@
     </th>
 
     <th>	
-        <a href="https://en.wikipedia.org/wiki/The_International"> <img src="{{ asset('Images/TI.jpg') }}" width="500px"> </a>
+        <a href="https://en.wikipedia.org/wiki/The_International"> <img src="{{ asset('Images/4.jpg') }}" width="500px"> </a>
     </th>
 
     </tr>
