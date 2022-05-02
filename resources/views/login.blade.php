@@ -8,7 +8,7 @@
     <title> LOGIN RESTO RESERVATION </title>
 </head>
 <center>
-<body style="margin-top:200px;">
+<body style="margin-top:200px; background-color: gray;">
     <h1> Resto Reservation Login</h1>
         <form action="{{ route('loginchecker') }}" method="any">
             @csrf 

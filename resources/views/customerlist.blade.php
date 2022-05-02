@@ -21,7 +21,7 @@
 </ul>
 </nav>
 </center>
-<body>
+<body style="background-color: gray;">
 <center>
 @if(!empty($activecustomers) && $activecustomers->count())
 <table class="table-sortable">

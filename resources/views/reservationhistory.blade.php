@@ -21,7 +21,7 @@
 </ul>
 </nav>
 </center>
-<body>
+<body style="background-color: gray;">
 <center>
 @if(!empty($notactivereservations) && $notactivereservations->count())
 <table class="table-sortable">

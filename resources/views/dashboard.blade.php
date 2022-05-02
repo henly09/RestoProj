@@ -21,7 +21,7 @@
 </ul>
 </nav>
 </center>
-<body>
+<body style="background-color: gray;">
 <center>
 <div class="flex-container">
         <div class="card">

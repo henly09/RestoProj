@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resto Reservation Signup</title>
 </head>
-<body>
+<body style="background-color: gray;">
 <center>
 <h1> Resto Reservation Signup</h1>
         <form action="{{ route('signupchecker') }}" method="any">

@@ -21,7 +21,7 @@
 </ul>
 </nav>
 </center>
-<body>
+<body style="background-color: gray;">
 <center>
 <h1> Resto Reservation Customer Registration</h1>
 <form action="{{ route('customerregister') }}" method="any">
