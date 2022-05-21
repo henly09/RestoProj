@@ -145,9 +145,9 @@ class IndexController extends Controller
     }  
     }
 
-    public function logout(Request $request){ // logout function
+    public function logoutmain(Request $request){ // logout function
         $request->session()->flush();
-        return view('login',['message' => '']);
+        return redirect()->route('login');
     }
 
     public function loginchecker(Request $request){ // login validation 

@@ -21,15 +21,15 @@ class tblcashierSeeder extends Seeder
         }
 
         DB::table('tblcashiers')->insert([
-            'First_Name' => 'John Henly',
-            'Last_Name' => 'Montera',
-            'username' => 'awtsgege',
-            'password' => '123123',
+            'First_Name' => 'Gianna',
+            'Last_Name' => 'Palmes',
+            'username' => 'gianneyy',
+            'password' => '071600',
             'status' => 'active',
-            'Address' => 'Rolls Royce St., Jerome, Agdao, Davao City',
-            'Phone_no' => '09633473223',
-            'Email' => 'monterahens@gmail.com',
-            'gender' => 'Male',
+            'Address' => '515- a Marang St., Tigatto, Davao City',
+            'Phone_no' => '09070101032',
+            'Email' => 'palmesgianna74@gmail.com',
+            'gender' => 'Female',
             "created_at" =>  \Carbon\Carbon::now(),
             "updated_at" => \Carbon\Carbon::now(),
         ]);
